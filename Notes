@@ -85,3 +85,28 @@ SELECT name FROM Contacts;
 SELECT name FROM Students   /* Fetch names from students */
 INTERSECT    /* that are present in contacts as well */
 SELECT name FROM Contacts;
+
+An aggregate function performs operations on a collection of values to return a single scalar value. 
+Aggregate functions are often used with the GROUP BY and HAVING clauses of the SELECT statement. Following are the widely used SQL aggregate functions:
+
+AVG() - Calculates the mean of a collection of values.
+COUNT() - Counts the total number of records in a specific table or view.
+MIN() - Calculates the minimum of a collection of values.
+MAX() - Calculates the maximum of a collection of values.
+SUM() - Calculates the sum of a collection of values.
+FIRST() - Fetches the first element in a collection of values.
+LAST() - Fetches the last element in a collection of values.
+Note: All aggregate functions described above ignore NULL values except for the COUNT function.
+
+A scalar function returns a single value based on the input value. Following are the widely used SQL scalar functions:
+
+LEN() - Calculates the total length of the given field (column).
+UCASE() - Converts a collection of string values to uppercase characters.
+LCASE() - Converts a collection of string values to lowercase characters.
+MID() - Extracts substrings from a collection of string values in a table.
+CONCAT() - Concatenates two or more strings.
+RAND() - Generates a random collection of numbers of a given length.
+ROUND() - Calculates the round-off integer value for a numeric field (or decimal point values).
+NOW() - Returns the current date & time.
+FORMAT() - Sets the format to display a collection of values.
+34. What is User-defined function? What are its vari
