@@ -1,1 +1,87 @@
-Structured Query Language
+A table is an organized collection of data stored in the form of rows and columns. Columns can be categorized as vertical and rows as horizontal.
+The columns in a table are called fields while the rows can be referred to as records.
+
+The PRIMARY KEY constraint uniquely identifies each row in a table. It must contain UNIQUE values and has an implicit NOT NULL constraint.
+A table in SQL is strictly restricted to have one and only one primary key, which is comprised of single or multiple fields (columns).
+
+Constraints are used to specify the rules concerning data in the table. It can be applied for single or multiple fields in an SQL table during the creation of the table or after creating using the ALTER TABLE command. The constraints are:
+
+NOT NULL - Restricts NULL value from being inserted into a column.
+CHECK - Verifies that all values in a field satisfy a condition.
+DEFAULT - Automatically assigns a default value if no value has been specified for the field.
+UNIQUE - Ensures unique values to be inserted into the field.
+INDEX - Indexes a field providing faster retrieval of records.
+PRIMARY KEY - Uniquely identifies each record in a table.
+FOREIGN KEY - Ensures referential integrity for a record in another table.
+
+A FOREIGN KEY comprises of single or collection of fields in a table that essentially refers to the PRIMARY KEY in another table.
+Foreign key constraint ensures referential integrity in the relation between two tables.
+The table with the foreign key constraint is labeled as the child table, and the table containing the candidate key is labeled as the referenced or parent table.
+
+(INNER) JOIN: Retrieves records that have matching values in both tables involved in the join. This is the widely used join for queries.
+LEFT (OUTER) JOIN: Retrieves all the records/rows from the left and the matched records/rows from the right table.
+RIGHT (OUTER) JOIN: Retrieves all the records/rows from the right and the matched records/rows from the left table.
+FULL (OUTER) JOIN: Retrieves all the records where there is a match in either the left or right table.
+
+A self JOIN is a case of regular join where a table is joined to itself based on some relation between its own column(s). 
+Self-join uses the INNER JOIN or LEFT JOIN clause and a table alias is used to assign different names to the table within the query.
+
+Cross join can be defined as a cartesian product of the two tables included in the join. 
+The table after join contains the same number of rows as in the cross-product of the number of rows in the two tables.
+If a WHERE clause is used in cross join then the query will work like an INNER JOIN.
+
+A subquery is a query within another query, also known as a nested query or inner query. It is used to restrict or enhance the data to be queried by the main query, thus restricting or enhancing the output of the main query respectively. For example, here we fetch the contact information for students who have enrolled for the maths subject:
+
+SELECT name, email, mob, address
+FROM myDb.contacts
+WHERE roll_no IN (
+ SELECT roll_no
+ FROM myDb.students
+ WHERE subject = 'Maths');
+
+WHERE clause in SQL is used to filter records that are necessary, based on specific conditions.
+
+ORDER BY clause in SQL is used to sort the records based on some field(s) in ascending (ASC) or descending order (DESC).
+SELECT *
+FROM myDB.students
+WHERE graduation_year = 2019
+ORDER BY studentID DESC;
+
+GROUP BY clause in SQL is used to group records with identical data and can be used in conjunction with some aggregation functions to produce summarized results from the database.
+
+HAVING clause in SQL is used to filter records in combination with the GROUP BY clause. It is different from WHERE, since the WHERE clause cannot filter aggregated records.
+
+SELECT COUNT(studentId), country
+FROM myDB.students
+WHERE country != "INDIA"
+GROUP BY country
+HAVING COUNT(studentID) > 5;
+
+The UNION operator combines and returns the result-set retrieved by two or more SELECT statements. Union by dault doesnt include duplicates, use UNION ALL for duplicates.
+
+The MINUS operator in SQL is used to remove duplicates from the result-set obtained by the second SELECT query from the result-set obtained by the first SELECT query and then return the filtered results from the first.
+
+The INTERSECT clause in SQL combines the result-set fetched by the two SELECT statements where records from one match the other and then returns this intersection of result-sets.
+
+Certain conditions need to be met before executing either of the above statements in SQL -
+
+Each SELECT statement within the clause must have the same number of columns
+
+The columns must also have similar data types
+The columns in each SELECT statement should necessarily have the same order
+
+SELECT name FROM Students   /* Fetch the union of queries */
+UNION
+SELECT name FROM Contacts;
+
+SELECT name FROM Students   /* Fetch the union of queries with duplicates*/
+UNION ALL
+SELECT name FROM Contacts;
+
+SELECT name FROM Students   /* Fetch names from students */
+MINUS     /* that aren't present in contacts */
+SELECT name FROM Contacts;
+
+SELECT name FROM Students   /* Fetch names from students */
+INTERSECT    /* that are present in contacts as well */
+SELECT name FROM Contacts;
