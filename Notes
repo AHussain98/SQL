@@ -149,3 +149,15 @@ WHERE first_name LIKE '___%'
 SELECT *   /* Matches first names with exactly four characters */
 FROM students
 WHERE first_name LIKE '____'
+
+
+Select Query as part of SQL NOT IN
+Syntax:
+
+SELECT Column(s) FROM table_name WHERE column NOT IN (SELECT Statement);
+Using the above-mentioned syntax, we can use SELECT statement for providing values as part of the IN operator. We will understand the above-mentioned syntax in more detail through some examples. Let’s consider the earlier defined Product and Supplier table for example purpose. Scenario: Get the price of the product where the supplier is not ABC. Query:
+
+SELECT ProductPrice FROM Product WHERE ProductName NOT IN 
+    (SELECT ProductName FROM Supplier WHERE SupplierName = "ABC");
+
+You can also give a comma seperated list of values in parenthesis for the NOT IN clause
