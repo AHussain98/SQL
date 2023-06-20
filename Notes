@@ -163,3 +163,5 @@ SELECT ProductPrice FROM Product WHERE ProductName NOT IN
 You can also give a comma seperated list of values in parenthesis for the NOT IN clause
 
 The key is to always use IS NULL or IS NOT NULL operators to specifically check for NULL value.
+
+GROUPCONCAT() is used to concatenat data from multiple rows into one field
