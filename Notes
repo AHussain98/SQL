@@ -185,3 +185,9 @@ SELECT
     END AS column_alias;
 Code language: PHP (php)
 Check it out the CASE expression tutorial for more information.
+
+A key that can accept only a null value and cannot accept duplicate values is called a unique key. The role of a unique key is to make sure that all columns and rows are unique.
+
+Unique Key constraints also identify an individual tuple uniquely in a relation or table. A table can have more than one unique key, unlike a primary key.
+Unique key constraints can accept only one NULL value for the column. Unique constraints are also referenced by the foreign key of another table.
+It can be used when someone wants to enforce unique constraints on a column and a group of columns which is not a primary key. 
