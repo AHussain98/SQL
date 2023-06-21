@@ -165,3 +165,23 @@ You can also give a comma seperated list of values in parenthesis for the NOT IN
 The key is to always use IS NULL or IS NOT NULL operators to specifically check for NULL value.
 
 GROUPCONCAT() is used to concatenat data from multiple rows into one field
+
+SQL Server supports ISNULL function that replaces NULL with a specified replacement value:
+
+ISNULL(expression, replacement)
+If the expression is NULL, then the ISNULL function returns the replacement. Otherwise, it returns the result of the expression.
+
+PostgreSQL does not have the ISNULL function. However, you can use the COALESCE function which provides similar functionality. Note that the COALESCE function returns the first non-null argument, so the following syntax has a similar effect as the ISNULL function above:
+
+COALESCE(expression,replacement)
+For the COALESCE example, check it out the COALESCE function tutorial.
+
+In addition to COALESCE function, you can use the CASE expression:
+
+SELECT 
+    CASE WHEN expression IS NULL 
+            THEN replacement 
+            ELSE expression 
+    END AS column_alias;
+Code language: PHP (php)
+Check it out the CASE expression tutorial for more information.
